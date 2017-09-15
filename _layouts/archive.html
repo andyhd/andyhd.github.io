@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Blog Archive</h1>
+
+  {{ content }}
+
+  <ul class="post-archives">
+    {% for post in site.posts %}
+
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.categories != empty %} • {% include category_links.html categories=post.categories %}{% endif %}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}{% if post.external-url %} &rarr;{% endif %}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
