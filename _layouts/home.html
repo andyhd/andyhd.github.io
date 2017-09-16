@@ -7,7 +7,7 @@ layout: default
   {{ content }}
 
   <ul class="post-list">
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
 
       <li>
         <header class="post-header">
@@ -29,7 +29,5 @@ layout: default
       </li>
     {% endfor %}
   </ul>
-
-  {% include pagination.html %}
 
 </div>
