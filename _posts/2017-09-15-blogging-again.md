@@ -2,6 +2,10 @@
 layout: post
 title: "Blogging again"
 date: "2017-09-15 18:43:21 +0100"
+tags:
+  - blog
+  - jekyll
+  - python
 ---
 
 Doing a blog using Jekyll.<!--more-->
@@ -24,5 +28,3 @@ def fizzbuzz(i):
 
 print('\n'.join(map(fizzbuzz, range(1, 20))))
 ```
-
-_Lame_ isn't it?

@@ -1,14 +1,7 @@
 author: Andy Driver
-title: andydriver.net
-description: Personal blog and musings
-url: "http://andydriver.net"
-lang: en
-timezone: UTC
 comments: false
+description: Personal blog and musings
 excerpt_separator: "<!--more-->"
-permalink: /:categories/:year/:month/:day/:title
-paginate_path: /posts/:num/
-paginate: 5
 kramdown:
   auto_ids: false
   enable_coderay: false
@@ -16,3 +9,17 @@ kramdown:
   footnote_nr: 1
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   toc_levels: 1..6
+lang: en
+paginate: 5
+paginate_path: /posts/:num/
+permalink: /:categories/:year/:month/:day/:title
+plugins:
+  - jekyll-avatar
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
+timezone: UTC
+title: andydriver.net
+url: "http://andydriver.net"
