@@ -17,6 +17,7 @@
     <meta name="keywords" content="{{ keywords }}">
   {% endif %}
 
+  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="canonical" href="{{ canonical }}">
   {% assign feed_path = "/feed.xml" %}
@@ -53,6 +54,5 @@
     <meta name="twitter:image:src" content="{{ site.twitter_image }}">
   {% endif %}
 
-  {% include fonts.html %}
   {% include google_analytics.html %}
 </head>
