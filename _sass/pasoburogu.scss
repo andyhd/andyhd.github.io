@@ -16,6 +16,8 @@ $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
+$code-background-color: #002b36 !default;
+
 // Width of the content area
 $content-width:    800px !default;
 
@@ -33,5 +35,5 @@ $on-laptop:        800px !default;
 @import
   "pasoburogu/base",
   "pasoburogu/layout",
-  "pasoburogu/syntax-highlighting"
+  "solarized-dark"
 ;
