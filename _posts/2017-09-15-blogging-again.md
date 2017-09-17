@@ -18,13 +18,14 @@ def fizzbuzz(i):
     out = ''
 
     if i % 3 == 0:
-        out = 'fizz'
+        out += 'fizz'
 
     if i % 5 == 0:
-        out = '{}buzz'.format(out)
+        out += 'buzz'
 
     return out or str(i)
 
 
-print('\n'.join(map(fizzbuzz, range(1, 20))))
+for i in range(1, 20):
+    print(fizzbuzz(i))
 ```
