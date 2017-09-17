@@ -1,6 +1,7 @@
 // Define defaults for each variable.
-$base-font-family: "Libre Baskerville", serif !default;
-$monospace-font-family: Monaco, Menlo, Consolas, "Courier New", monospace !default;
+$base-font-family: "Source Serif Pro", serif !default;
+$monospace-font-family: "Source Code Pro", monospace !default;
+$subheading-font-family: "Source Sans Pro", sans-serif !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
@@ -8,8 +9,8 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
+$text-color:       #5c5c5c !default;
+$background-color: #dadfe1 !default;
 $brand-color:      #2568ba !default;
 
 $grey-color:       #828282 !default;

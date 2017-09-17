@@ -10,6 +10,7 @@
 }
 
 .site-title {
+  font-family: $subheading-font-family;
   font-size: 26px;
   font-weight: 300;
   line-height: 56px;
@@ -56,6 +57,7 @@
  */
 .site-footer {
   padding: $spacing-unit 0;
+  font-family: $subheading-font-family;
   font-size: 15px;
   color: $grey-color;
   text-align: center;
@@ -106,6 +108,7 @@
 }
 
 .post-meta {
+  font-family: $subheading-font-family;
   font-size: $small-font-size;
   color: $grey-color;
 }
