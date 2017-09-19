@@ -38,8 +38,8 @@ layout: default
     </p>
   </section>
 
-  <section class="post-comments">
-  {% if site.comments != false and page.comments != false %}
+  <section class="comments">
+  {% if page.comments != false %}
     <div class="post-comments" itemprop="comment">
       {% include custom_comments_provider.html %}
     </div>

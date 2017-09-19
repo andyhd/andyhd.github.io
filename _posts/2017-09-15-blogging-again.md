@@ -2,6 +2,7 @@
 layout: post
 title: "Blogging again"
 date: "2017-09-15 18:43:21 +0100"
+comments: true
 tags:
   - blog
   - jekyll
