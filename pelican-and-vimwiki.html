@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>  <title>God Object</title>
+  <link rel="stylesheet" href="https://andydriver.net/theme/css/main.css">
+  <link rel="stylesheet" href="https://andydriver.net/css/monokai.css"></head>
+<body>
+  <h1>God Object</h1>
+  <header class="site-header">
+    <nav>
+      <ul>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/contact" class="contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>  <article>
+    <h1>Pelican and Vimwiki</h1>
+    <span>Posted <time datetime="2021-01-29 00:00:00+00:00">just before midnight on a rainy Thursday</time></span>
+    <p>I&rsquo;ve managed to get <a href="https://docs.getpelican.com/en/latest/">Pelican</a> to work
+with <a href="https://vimwiki.github.io/">Vimwiki</a> so that I can publish my personal
+wiki directly to this site. I&rsquo;ll explain here what I did, why, and how I did it.</p>
+<h1>Why</h1>
+<p>I have never been a prolific (or noteworthy) writer, but every now and again I
+feel like giving it a try. Over the years I have used various means of
+publishing my drivel. Back in the day I claimed my <a href="">GeoCities</a> address and put
+up an embarrassing page about Kate Moss and Nine Inch Nails.  Later, I switched
+to a <a href="https://www.blogger.com/">Blogger.com</a> account, and posted little pieces
+of nerdiness gathered from around the World Wide Web. Of course, as a
+programmer, I wanted to write my own blog software. So I did. Over and over
+again.</p>
+<p>These days I don&rsquo;t have the time to repeatedly reinvent the wheel. Instead I
+prefer to clumsily lash existing programs together to make a ramshackle raft of
+software just good enough to get the job done. Just for myself, of course, not
+for clients.</p>
+<h2>Pelican</h2>
+<p><img alt="A pelican" title="A pelican" src="/images/pelican.jpg" style="float:
+right; width: 40%"></p>
+<p>Recently I&rsquo;ve been hearing a lot about <a href="https://jamstack.org/">JAMstack</a>
+(Javascript, APIs and Markup), which proposes a way to build web sites using
+client-side Javascript for dynamic functionality such as making requests to
+APIs, and serving static HTML files rather than running web application software
+that build pages on request. This fits quite nicely with my software MacGyver
+ambitions, and I already have some experience with
+<a href="https://jekyllrb.com/">Jekyll</a> to generate static HTML for my personal site.</p>
+<p>For no good reason other than tribalism, I wanted to use a Python based static
+site generator instead of Jekyll, which is written in Ruby. I found
+<a href="https://blog.getpelican.com/">Pelican</a> which seems to support all of my current
+requirements, being</p>
+<ol>
+<li>Written in Python. Flimsy rationalization: I am comfortable with Python and I
+   may want to write plugins</li>
+<li>Handles <a href="https://daringfireball.net/projects/markdown/">Markdown</a>. I don&rsquo;t want to learn another markup language.</li>
+<li>I like pelicans.</li>
+</ol>
+<h2>Vimwiki</h2>
+<p>I use <a href="">Vim</a> for editing text. I&rsquo;ve been using it for about 20 years and I just
+can&rsquo;t be bothered to try anything else, so I won&rsquo;t bore you with the details of
+<a href="https://stackoverflow.com/a/1220118">what makes Vim such a good editor</a>.</p>
+<p><a href="">Vimwiki</a> is a handy plugin for Vim that provides an interface to treat a bunch of
+text files as a <a href="http://wiki.org/wiki.cgi?WhatIsWiki">wiki</a>. Having a personal
+offline wiki is a useful way of storing notes and ideas in an interlinked way,
+rather like a <a href="https://en.wikipedia.org/wiki/Mind_map">mind-map</a>. These text
+files can be in several formats, one of which is Markdown. Aha!</p>
+<h1>How</h1>
+<p>Vimwiki and Pelican can both make use of Markdown files, so it is quite easy to
+get them to work together.</p>
+<p>First I created my Pelican blog:</p>
+<div class="highlight"><pre><span></span><code>mkdir blog
+<span class="nb">cd</span> blog
+pelican-quickstart
+</code></pre></div>
+
+<p>This creates the following directory structure:</p>
+<div class="highlight"><pre><span></span><code>blog/
+  content/
+  output/
+  Makefile
+  pelicanconf.py
+  publishconf.py
+  tasks.py
+</code></pre></div>
+
+<p>Pelican treats any Markdown file in the <code>content</code> directory as a
+blog post. If you want non-blog pages (for example, an &ldquo;About&rdquo; page or a
+contact form page), you can put them in <code>content/pages</code>.</p>
+<p>By contrast, Vimwiki defaults to putting diary entries (which I want to be blog posts) in a
+subdirectory called <code>diary</code> and non-diary pages in the wiki root directory.</p>
+<p>As a compromise, I put posts and pages in sibling directories,
+respectively <code>diary</code> and <code>pages</code>. </p>
+<p>I edited the <code>pelicanconf.py</code> file and added the
+<code>ARTICLE_PATHS</code> setting, which is where it looks for blog post files:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ARTICLE_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;diary&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Then I added the Vimwiki settings in my <code>.vimrc</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">let</span> <span class="k">g</span>:vimwiki_list <span class="p">=</span> [
+    \ {<span class="s1">&#39;path&#39;</span>: <span class="s1">&#39;~/blog/content/pages/&#39;</span><span class="p">,</span>
+        \ <span class="s1">&#39;ext&#39;</span>: <span class="s1">&#39;.md&#39;</span><span class="p">,</span>
+        \ <span class="s1">&#39;syntax&#39;</span>: <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+        \ <span class="s1">&#39;diary_rel_path&#39;</span>: <span class="s1">&#39;../&#39;</span><span class="p">,</span>
+    \ }<span class="p">,</span>
+    \ {<span class="s1">&#39;path&#39;</span>: <span class="s1">&#39;~/vimwiki&#39;</span>}<span class="p">,</span>
+\ ]
+</code></pre></div>
+
+<p>I left the default Vimwiki in the list, as it allows multiple wikis.</p>
+<p>Finally, to enable wiki links, I configured the wikilinks Markdown extension in
+<code>pelicanconf.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">MARKDOWN</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;extension_configs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;wikilinks&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;base_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pages/&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;markdown.extensions.codehilite&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;css_class&quot;</span><span class="p">:</span> <span class="s2">&quot;highlight&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;markdown.extensions.extra&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;markdown.extensions.meta&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;output_format&quot;</span><span class="p">:</span> <span class="s2">&quot;html5&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h1>So What</h1>
+<p>This setup allows me to start a new blog post in Vim with <code>\w\w</code> . I can write
+in Markdown and have Pelican convert it to HTML and even push it to <a href="https://pages.github.com/">Github
+Pages</a>.</p>
+<p>I can use <code>[[WikiLinks]]</code> to link pages both in Vim and to generate links on my website.</p>
+<p>All without writing a line of code and just editing a couple of configuration files.</p>
+<p>It certainly beats writing, quickly tiring of, rewriting, finessing and
+eventually abandoning yet another blog application. Now I have more time to get
+good at writing.</p>
+  </article>
+  </main>
+</body>
+</html>

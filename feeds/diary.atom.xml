@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>God Object - diary</title><link href="https://andydriver.net/" rel="alternate"></link><link href="https://andydriver.net/feeds/diary.atom.xml" rel="self"></link><id>https://andydriver.net/</id><updated>2021-01-29T00:00:00+00:00</updated><entry><title>Pelican and Vimwiki</title><link href="https://andydriver.net/pelican-and-vimwiki.html" rel="alternate"></link><published>2021-01-29T00:00:00+00:00</published><updated>2021-01-29T00:00:00+00:00</updated><author><name>Andy</name></author><id>tag:andydriver.net,2021-01-29:/pelican-and-vimwiki.html</id><summary type="html">&lt;p&gt;Behold my sticky tape and rubber bands&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;rsquo;ve managed to get &lt;a href="https://docs.getpelican.com/en/latest/"&gt;Pelican&lt;/a&gt; to work
+with &lt;a href="https://vimwiki.github.io/"&gt;Vimwiki&lt;/a&gt; so that I can publish my personal
+wiki directly to this site. I&amp;rsquo;ll explain here what I did, why, and how I did it.&lt;/p&gt;
+&lt;h1&gt;Why&lt;/h1&gt;
+&lt;p&gt;I have never been a prolific (or noteworthy) writer, but every now and again I
+feel like giving it a try. Over the years I have used various means of
+publishing my drivel. Back in the day I claimed my &lt;a href=""&gt;GeoCities&lt;/a&gt; address and put
+up an embarrassing page about Kate Moss and Nine Inch Nails.  Later, I switched
+to a &lt;a href="https://www.blogger.com/"&gt;Blogger.com&lt;/a&gt; account, and posted little pieces
+of nerdiness gathered from around the World Wide Web. Of course, as a
+programmer, I wanted to write my own blog software. So I did. Over and over
+again.&lt;/p&gt;
+&lt;p&gt;These days I don&amp;rsquo;t have the time to repeatedly reinvent the wheel. Instead I
+prefer to clumsily lash existing programs together to make a ramshackle raft of
+software just good enough to get the job done. Just for myself, of course, not
+for clients.&lt;/p&gt;
+&lt;h2&gt;Pelican&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="A pelican" title="A pelican" src="/images/pelican.jpg" style="float:
+right; width: 40%"&gt;&lt;/p&gt;
+&lt;p&gt;Recently I&amp;rsquo;ve been hearing a lot about &lt;a href="https://jamstack.org/"&gt;JAMstack&lt;/a&gt;
+(Javascript, APIs and Markup), which proposes a way to build web sites using
+client-side Javascript for dynamic functionality such as making requests to
+APIs, and serving static HTML files rather than running web application software
+that build pages on request. This fits quite nicely with my software MacGyver
+ambitions, and I already have some experience with
+&lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; to generate static HTML for my personal site.&lt;/p&gt;
+&lt;p&gt;For no good reason other than tribalism, I wanted to use a Python based static
+site generator instead of Jekyll, which is written in Ruby. I found
+&lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; which seems to support all of my current
+requirements, being&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Written in Python. Flimsy rationalization: I am comfortable with Python and I
+   may want to write plugins&lt;/li&gt;
+&lt;li&gt;Handles &lt;a href="https://daringfireball.net/projects/markdown/"&gt;Markdown&lt;/a&gt;. I don&amp;rsquo;t want to learn another markup language.&lt;/li&gt;
+&lt;li&gt;I like pelicans.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Vimwiki&lt;/h2&gt;
+&lt;p&gt;I use &lt;a href=""&gt;Vim&lt;/a&gt; for editing text. I&amp;rsquo;ve been using it for about 20 years and I just
+can&amp;rsquo;t be bothered to try anything else, so I won&amp;rsquo;t bore you with the details of
+&lt;a href="https://stackoverflow.com/a/1220118"&gt;what makes Vim such a good editor&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=""&gt;Vimwiki&lt;/a&gt; is a handy plugin for Vim that provides an interface to treat a bunch of
+text files as a &lt;a href="http://wiki.org/wiki.cgi?WhatIsWiki"&gt;wiki&lt;/a&gt;. Having a personal
+offline wiki is a useful way of storing notes and ideas in an interlinked way,
+rather like a &lt;a href="https://en.wikipedia.org/wiki/Mind_map"&gt;mind-map&lt;/a&gt;. These text
+files can be in several formats, one of which is Markdown. Aha!&lt;/p&gt;
+&lt;h1&gt;How&lt;/h1&gt;
+&lt;p&gt;Vimwiki and Pelican can both make use of Markdown files, so it is quite easy to
+get them to work together.&lt;/p&gt;
+&lt;p&gt;First I created my Pelican blog:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir blog
+&lt;span class="nb"&gt;cd&lt;/span&gt; blog
+pelican-quickstart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This creates the following directory structure:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;blog/
+  content/
+  output/
+  Makefile
+  pelicanconf.py
+  publishconf.py
+  tasks.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pelican treats any Markdown file in the &lt;code&gt;content&lt;/code&gt; directory as a
+blog post. If you want non-blog pages (for example, an &amp;ldquo;About&amp;rdquo; page or a
+contact form page), you can put them in &lt;code&gt;content/pages&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;By contrast, Vimwiki defaults to putting diary entries (which I want to be blog posts) in a
+subdirectory called &lt;code&gt;diary&lt;/code&gt; and non-diary pages in the wiki root directory.&lt;/p&gt;
+&lt;p&gt;As a compromise, I put posts and pages in sibling directories,
+respectively &lt;code&gt;diary&lt;/code&gt; and &lt;code&gt;pages&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;I edited the &lt;code&gt;pelicanconf.py&lt;/code&gt; file and added the
+&lt;code&gt;ARTICLE_PATHS&lt;/code&gt; setting, which is where it looks for blog post files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ARTICLE_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;diary&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then I added the Vimwiki settings in my &lt;code&gt;.vimrc&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="k"&gt;g&lt;/span&gt;:vimwiki_list &lt;span class="p"&gt;=&lt;/span&gt; [
+    \ {&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;~/blog/content/pages/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        \ &lt;span class="s1"&gt;&amp;#39;ext&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;.md&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        \ &lt;span class="s1"&gt;&amp;#39;syntax&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;markdown&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        \ &lt;span class="s1"&gt;&amp;#39;diary_rel_path&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;../&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    \ }&lt;span class="p"&gt;,&lt;/span&gt;
+    \ {&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;~/vimwiki&amp;#39;&lt;/span&gt;}&lt;span class="p"&gt;,&lt;/span&gt;
+\ ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I left the default Vimwiki in the list, as it allows multiple wikis.&lt;/p&gt;
+&lt;p&gt;Finally, to enable wiki links, I configured the wikilinks Markdown extension in
+&lt;code&gt;pelicanconf.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;MARKDOWN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extension_configs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;wikilinks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;base_url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/pages/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;markdown.extensions.codehilite&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;css_class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;highlight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;markdown.extensions.extra&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;markdown.extensions.meta&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;output_format&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;html5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1&gt;So What&lt;/h1&gt;
+&lt;p&gt;This setup allows me to start a new blog post in Vim with &lt;code&gt;\w\w&lt;/code&gt; . I can write
+in Markdown and have Pelican convert it to HTML and even push it to &lt;a href="https://pages.github.com/"&gt;Github
+Pages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I can use &lt;code&gt;[[WikiLinks]]&lt;/code&gt; to link pages both in Vim and to generate links on my website.&lt;/p&gt;
+&lt;p&gt;All without writing a line of code and just editing a couple of configuration files.&lt;/p&gt;
+&lt;p&gt;It certainly beats writing, quickly tiring of, rewriting, finessing and
+eventually abandoning yet another blog application. Now I have more time to get
+good at writing.&lt;/p&gt;</content><category term="diary"></category></entry><entry><title>Ludum Dare Results</title><link href="https://andydriver.net/ludum-dare-results.html" rel="alternate"></link><published>2018-09-12T07:52:03+01:00</published><updated>2018-09-12T07:52:03+01:00</updated><author><name>Andy</name></author><id>tag:andydriver.net,2018-09-12:/ludum-dare-results.html</id><summary type="html">&lt;p&gt;Here&amp;rsquo;s what I managed to achieve in my first game jam.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Thieving beavers" src="/images/thieving-beavers.gif"&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not quite finished, and it&amp;rsquo;s not as good as I hoped, but I learned a lot.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/andyhd/ld42/releases/latest"&gt;Download&lt;/a&gt; and try it out.
+Or check out the &lt;a href="https://github.com/andyhd/ld42"&gt;source code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I placed &lt;a href="https://ldjam.com/events/ludum-dare/42/beaver-pitch"&gt;716&lt;sup&gt;th&lt;/sup&gt; overall&lt;/a&gt;, out of 3069 entries. Not too bad for a first effort.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how it went down:&lt;/p&gt;
+&lt;h2&gt;Idea&lt;/h2&gt;
+&lt;p&gt;The theme of the jam was &amp;ldquo;Running out of space&amp;rdquo;. I spent half an hour or so
+coming up with some ideas that might be workable:&lt;/p&gt;
+&lt;h3&gt;Fitting things in&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You are the Maitre&amp;rsquo;d at a popular restaurant and you have to assign diner
+    groups to tables.&lt;/li&gt;
+&lt;li&gt;Your disk drive is getting full. You need to delete some files. But which
+    are vital code?&lt;/li&gt;
+&lt;li&gt;There are more and more patients and a limited number of hospital beds.&lt;/li&gt;
+&lt;li&gt;You have to clean up orbital debris to make way for satellites and rocket
+    launches.&lt;/li&gt;
+&lt;li&gt;Too many cars, not enough parking spaces.&lt;/li&gt;
+&lt;li&gt;Your family is growing too big for your house. Clear out rooms or save for
+    an extension.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Running&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You are a space smuggler &amp;ldquo;running&amp;rdquo; contraband between planets.&lt;/li&gt;
+&lt;li&gt;You are literally running in a spacewalk race.&lt;/li&gt;
+&lt;li&gt;You are running a space delivery company.&lt;/li&gt;
+&lt;li&gt;Alien plants are running tendrils from space and choking your planet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Space&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You have to navigate a crowded street/train/etc where people get in your
+    personal space - try not to lose your temper!&lt;/li&gt;
+&lt;li&gt;Something in Outer space.&lt;/li&gt;
+&lt;li&gt;Game set in Inner space: Nanobots and viruses inside a body.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Shrinking environment&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You are defending against opponents that consume the ground you are on. You
+    need the ground around you for resources.&lt;/li&gt;
+&lt;li&gt;When you fail, the path you took is closed off.&lt;/li&gt;
+&lt;li&gt;You are growing uncontrollably. You have to escape before you get stuck.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then I chose the one that I thought would be easiest to build in the 48 hours
+available and fleshed out the idea into &amp;ldquo;Beaver Pitch&amp;rdquo; (credit for the title
+goes to Deborah!)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You are a beaver. Your dam/home is made of logs. Other beavers are trying to
+  steal the logs and you have to protect/replace them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I shared the rest of my ideas on the &lt;a href="https://ldjam.com"&gt;LDJam website&lt;/a&gt;, in the
+hopes that my ideas might help others struggling to come up with something. At
+least one person actually did use one of my ideas, which felt pretty good!&lt;/p&gt;
+&lt;h2&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;I had set aside the whole weekend to work on my game, and I knew I wanted to
+build it in Common Lisp, as I said in the
+&lt;a href="/2018/08/02/ludum-dare"&gt;previous post&lt;/a&gt;. I had my working environment all set up
+and ready to go, which was great as I could just start coding right away.&lt;/p&gt;
+&lt;p&gt;What I should have done at this point is make a rough schedule of work - how I
+would divide up the 48 hours into coding, drawing the graphics, composing the
+music and sound effects, eating and sleeping.&lt;/p&gt;
+&lt;p&gt;What I actually did was jump straight into drawing a sprite for the main
+character. I&amp;rsquo;ve seen a few game jam development diaries and postmortems which
+reveal that the developer started with just coloured blocks on the screen and no
+images at all until they get the core of the gameplay working. I think I will
+try this method next time.&lt;/p&gt;
+&lt;p&gt;I recorded a time-lapse video of my screen as I worked - here is a slightly
+edited version which skips long periods of inactivity(!):&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/A5lTF7UjUAg?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;What surprised me when watching it back was how much time I spent not working on
+the game, and instead browsing the LDJam website. I definitely felt a sense of
+being involved in the event and being part of a community while reading through
+the posts. But I would have got a lot more finished in my game if I had been
+more disciplined. Next time, I will use the
+&lt;a href="https://francescocirillo.com/pages/pomodoro-technique"&gt;Pomodoro technique&lt;/a&gt; to
+keep myself focused.&lt;/p&gt;
+&lt;h2&gt;Learnings&lt;/h2&gt;
+&lt;p&gt;I learned a lot about writing a game, and specifically how to reduce the scope
+of a game jam entry.&lt;/p&gt;
+&lt;p&gt;Beforehand, I read up on how to prepare and familiarised myself with my tools.
+Spending a little time just laying the groundwork for the game meant I could hit
+the ground running as soon as the jam started. And practicing with
+&lt;a href="http://www.warmplace.ru/soft/sunvox/"&gt;Sunvox&lt;/a&gt; meant that, if I hadn&amp;rsquo;t run out
+of time, I wouldn&amp;rsquo;t have wasted any during the jam, trying to learn as I went.&lt;/p&gt;
+&lt;p&gt;I really stretched my Common Lisp skills and feel a lot happier with how I
+write Lisp. I decided to avoid CLOS so as not to write Lisp as though it were
+Python or another OO language. I practiced iteration without using the LOOP
+macro in an attempt to broaden my knowledge of Lisp and keep the code as simple
+as possible.&lt;/p&gt;
+&lt;p&gt;Afterwards, I realized how my lack of a schedule had hurt my ability to use the
+time available to the fullest. I also received some great feedback during the
+rating phase of the jam, and have a list of bug fixes and enhancements to make
+to the game post-jam.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I really enjoyed participating in Ludum Dare 42. The next one starts on 30&lt;sup&gt;th&lt;/sup&gt;
+November, and I may have another go, if I can make the time.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m also tempted by &lt;a href="http://www.onegameamonth.com/"&gt;1 Game A Month&lt;/a&gt;. I
+think the learning experience of writing a number of games at a less frantic
+pace will be more valuable to me than the competition and intensity of a 48 hour
+game jam.&lt;/p&gt;
+&lt;p&gt;Anyway, this experience has shown me how much I have to learn before I&amp;rsquo;ll be
+able to develop a game good enough to place well in Ludum Dare.&lt;/p&gt;
+&lt;p&gt;I know it will be fun getting there!&lt;/p&gt;</content><category term="diary"></category></entry><entry><title>Who Dares Wins</title><link href="https://andydriver.net/who-dares-wins.html" rel="alternate"></link><published>2018-08-02T14:58:28+01:00</published><updated>2018-08-02T14:58:28+01:00</updated><author><name>Andy</name></author><id>tag:andydriver.net,2018-08-02:/who-dares-wins.html</id><summary type="html">&lt;p&gt;It&amp;rsquo;s time for Ludum Dare 42, and I am &lt;em&gt;in&lt;/em&gt;!&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you haven&amp;rsquo;t heard of &lt;a href="https://ldjam.com"&gt;Ludum Dare&lt;/a&gt;, and you are at all
+interested in computer games, you should go and check it out now. It&amp;rsquo;s ok, I&amp;rsquo;ll
+wait.&lt;/p&gt;
+&lt;h2&gt;Jams&lt;/h2&gt;
+&lt;p&gt;Game Jams are many and varied. Most have a simple set of rules, including how
+long you can spend writing your game, which languages and frameworks you can
+use, and usually a theme for the game.&lt;/p&gt;
+&lt;p&gt;Here are a few I have my eye on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://ldjam.com"&gt;&lt;strong&gt;Ludum Dare&lt;/strong&gt;&lt;/a&gt; - As I mentioned, this is a huge jam with
+  thousands of participants. Contestants have to write a game, solo, in 48
+  hours, using any programming language they like.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pyweek.org"&gt;&lt;strong&gt;PyWeek&lt;/strong&gt;&lt;/a&gt; - A challenge to write a game in Python in a
+  week. I&amp;rsquo;ve written a lot of Python, and I&amp;rsquo;ve had a go at writing games using
+  &lt;a href="https://pyglet.readthedocs.io/en/pyglet-1.3-maintenance/"&gt;Pyglet&lt;/a&gt;, although
+  most people use &lt;a href="https://www.pygame.org/"&gt;pygame&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://itch.io/jam/lisp-game-jam-2018"&gt;&lt;strong&gt;Lisp Game Jam&lt;/strong&gt;&lt;/a&gt; - Write a game in any
+  Lisp in 10 days. I love Lisp, but I&amp;rsquo;m not very fluent yet. There&amp;rsquo;s nothing
+  like trying to write a game to teach yourself a programming language.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.onegameamonth.com/"&gt;&lt;strong&gt;#1GAM&lt;/strong&gt;&lt;/a&gt; - Less of a competition than a personal
+  challenge: write one game every month for a year! I like the idea of honing my
+  gamedev skills through repetition and the less directly competitive nature of
+  this one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Themes&lt;/h2&gt;
+&lt;p&gt;At the time of writing this post, I&amp;rsquo;m waiting for the theme of Ludum Dare 42 to
+be announced. Entrants can suggest 3 themes each, and then everyone votes yes or
+no to each suggestion, filtering down to a final theme selection.&lt;/p&gt;
+&lt;p&gt;The theme is meant as a helpful restriction, to reduce the overwhelming
+possibilities of what kind of game to write.&lt;/p&gt;
+&lt;h2&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;This is actually the first time I have entered Ludum Dare officially -
+previously I&amp;rsquo;ve lurked on the sidelines, trying to write games in the allotted
+time without actually declaring my participation. This time I&amp;rsquo;ve set aside some
+time to get involved and have prepared the way so that I can hit the ground
+running.&lt;/p&gt;
+&lt;p&gt;My preparations have included:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Setting up a &lt;a href="https://github.com/andyhd/ld42"&gt;Github repo&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writing a skeleton codebase, to prove that I can actually deliver something.
+  I&amp;rsquo;m using Common Lisp and
+  &lt;a href="https://borodust.org/projects/trivial-gamekit/"&gt;trivial-gamekit&lt;/a&gt;, which has
+  enabled me to set up automatic builds of MacOS, Linux and Windows binaries, so
+  I don&amp;rsquo;t end up with something nobody can play.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Learning my tools, including &lt;a href="http://www.warmplace.ru/soft/sunvox/"&gt;Sunvox&lt;/a&gt;
+  for music. I found a handy &lt;a href="https://www.youtube.com/playlist?list=PL62F503E7722DB7CC"&gt;tutorial
+  series&lt;/a&gt; on Youtube.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reading &lt;a href="https://amzn.to/2AzxssO"&gt;The Game Jam Survival Guide&lt;/a&gt; which gives
+  advice on how to approach a game jam - rookie mistakes to avoid and
+  tips from the old hands.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Wish me luck!&lt;/h3&gt;
+&lt;p&gt;I have a feeling I&amp;rsquo;m going to need it&amp;hellip;&lt;/p&gt;</content><category term="diary"></category></entry></feed>
