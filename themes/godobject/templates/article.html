@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article>
+    <h1>{{ article.title }}</h1>
+    <span>Posted <time datetime="{{ article.date }}">{{ article.friendly_date }}</time></span>
+    {{ article.content }}
+  </article>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+{%- block head %}
+  <title>{% block title %}God Object{% endblock %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/css/monokai.css">
+{%- endblock %}
+</head>
+<body>
+  <h1>God Object</h1>
+  <header class="site-header">
+    <nav>
+      <ul>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/contact" class="contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {%- block content %}{% endblock %}
+  </main>
+</body>
+</html>
