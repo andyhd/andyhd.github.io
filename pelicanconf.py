@@ -6,7 +6,7 @@ SITENAME = "God Object"
 SITEURL = ""
 
 PATH = "content"
-ARTICLE_PATHS = ["diary"]
+PAGE_PATHS = ["."]
 STATIC_PATHS = ["css", "images"]
 
 TIMEZONE = "Europe/London"
@@ -48,9 +48,7 @@ MARKDOWN = {
             },
         },
         "smarty": {},
-        "wikilinks": {
-            "base_url": "/pages/",
-        },
+        "wikilinks": {},
         "markdown.extensions.codehilite": {
             "css_class": "highlight",
         },
