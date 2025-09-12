@@ -1,14 +1,46 @@
-/* typography */
-@font-face {
-    font-family: 'gilroy-extrabold';
-    src: url('../fonts/gilroy-extrabold-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-extrabold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+:root {
+  --background-colour: #eee;
+  --logo-colour: #ddd;
+  --font-colour: #666;
+  --link-colour: HSL(52, 40%, 55%);
+  --heading-colour: #777;
+  --subheading-colour: #999;
+}
 
+@media (prefers-color-scheme: dark) {
+  --background-colour: #111;
+  --logo-colour: #000;
+  --font-colour: #888;
+  --link-colour: HSL(52, 40%, 55%);
+  --heading-colour: HSL(0, 0%, 87%);
+  --subheading-colour: #444;
+}
+
+.dark {
+  --background-colour: #111;
+  --logo-colour: #000;
+  --font-colour: #888;
+  --link-colour: HSL(52, 40%, 55%);
+  --heading-colour: HSL(0, 0%, 87%);
+  --subheading-colour: #444;
+}
+
+@font-face {
+  font-family: 'gilroy-extrabold';
+  src: url('../fonts/gilroy-extrabold-webfont.woff2') format('woff2'),
+       url('../fonts/gilroy-extrabold-webfont.woff') format('woff');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'mobo-bold';
+  src: url('../fonts/mobo-bold-webfont.woff2') format('woff2'),
+       url('../fonts/mobo-bold-webfont.woff') format('woff');
+  font-weight: normal;
 }
 html {
-    font-size: 40px;
+  font-size: 40px;
+  background-color: var(--background-colour);
+  transition: background-color 0.5s ease;
 }
 h1, h2, h3, h4 {
   font-family: gilroy-extrabold, sans-serif;
@@ -16,100 +48,162 @@ h1, h2, h3, h4 {
 h2 {
   font-size: 120%;
 }
-body>h1 {
-    font-size: 26.6vmax;
+.content>h1 {
+    /* font-size: 26.6vmax; */
 }
 
 @media screen and (min-width: 1000px) {
-  body {
+  .content {
     font-size: 19px;
   }
 }
 
 /* spacing */
 body {
-  background-color: #111;
   margin: 0;
 }
-body>h1 {
+.content {
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+.content>h1 {
   position: fixed;
   bottom: 0;
   margin: 0;
   padding: 0;
-  line-height: 0.81;
+  line-height: 0.9;
   text-transform: uppercase;
-  color: #000;
+  color: var(--logo-colour);
   z-index: -1;
   -webkit-text-stroke-width: 0.1em;
+  font-family: mobo-bold;
+  font-size: 25vw;
 }
 .site-header {
-  position: fixed;
-  top: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(0.3em);
-  z-index: 99;
 }
 .site-header nav {
-    width: 100%;
-    margin: 0 auto;
-}
-@media screen and (min-width: 1000px) {
-    .site-header nav {
-        width: 65%;
-    }
+  width: 65%;
+  margin: 0 auto;
 }
 .site-header nav ul {
+  display: table;
   margin: 0;
   padding: 0;
   text-align: right;
+  width: 100%;
+}
+.site-header nav ul::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 .site-header nav li {
+  display: table-cell;
   list-style-type: none;
-  display: inline-block;
-  width: 25%;
-  height: 4em;
-  text-align: center;
-}
-.site-header nav a {
-  text-transform: uppercase;
-  color: #777;
+  text-align: left;
+  vertical-align: middle;
+  color: var(--heading-colour);
   text-decoration: none;
   font-family: gilroy-extrabold, sans-serif;
-  display: block;
-  line-height: 3;
-  margin: 0.5em auto;
+  text-transform: uppercase;
+  font-size: 32px;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
 }
+
+.site-header nav .github-link {
+  display: inline-block;
+  width: 60px;
+}
+.site-header nav .github-link a {
+  display: block;
+  color: var(--heading-colour);
+  width: 33px;
+  height: 32px;
+}
+.site-header nav .github-link svg {
+  width: 100%;
+  height: 100%;
+}
+.site-header nav .github-link svg path {
+  transform: scale(0.333333);
+}
+.site-header nav .github-link span {
+  display: none;
+}
+
+.site-header nav .toggle {
+  width: 62px;
+  height: 64px;
+  display: inline-block;
+}
+.site-header nav .toggle input {
+  position: relative;
+  cursor: pointer;
+  height: 0;
+  margin: 0;
+}
+.site-header nav .toggle input::before {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 26px;
+  background: var(--background-colour);
+  border-radius: 40px;
+  border: 3px solid var(--heading-colour);
+  top: 6px;
+}
+.site-header nav .toggle input::after {
+  content: "";
+  display: block;
+  height: 22px;
+  width: 22px;
+  border-radius: 30px;
+  position: relative;
+  top: 11px;
+  left: 5px;
+  background: var(--heading-colour);
+  z-index: 2;
+  transform: translate(0);
+  transition: transform 0.5s ease;
+}
+.site-header nav .toggle input:checked::after {
+  transform: translateX(30px);
+}
+.site-header nav .toggle span {
+  display: none;
+}
+
 .site-header nav .contact {
   color: HSL(52, 89%, 63%);
   border: 4px solid #f5df4d;
-  padding: -5px;
   white-space: nowrap;
 }
-body>main {
-  color: #888;
+.content>main {
+  color: var(--font-colour);
   font-family: sans-serif;
-  margin-top: 4em;
+  margin-top: 3em;
 }
 @media screen and (min-width: 1000px) {
-    body>main {
+    .content>main {
         width: 65%;
-        margin: 4em auto 0;
+        margin: 3em auto 0;
     }
 }
 main>article {
   max-width: 65ch;
-  margin: 3rem 0 1rem;
+  margin: 0 0 1rem;
 }
 main a {
-  color: HSL(52, 40%, 55%);
+  color: var(--link-colour);
   text-decoration: none;
 }
 main p {
   line-height: 1.5;
-}
-main img {
-  margin: 0 1em 1em;
 }
 .gemoji {
   margin: 0.1em 0 0.4em;
@@ -118,56 +212,38 @@ main img {
 }
 main h1 {
   font-family: gilroy-extrabold, sans-serif;
-  color: HSL(0, 0%, 87%);
+  color: var(--heading-colour);
   margin: 0;
 }
 main h1>a {
   text-decoration: none;
-  color: #ddd;
+  color: var(--heading-colour);
 }
 main h1+span {
   font-family: sans-serif;
   font-size: smaller;
-  color: #444;
+  color: var(--subheading-colour);
+}
+main h3 {
+  margin: 2em 0 0;
 }
 main blockquote {
-  border-left: 3px solid #444;
-  font-size: 1.25em;
-  font-style: italic;
-  line-height: 1.4;
-  margin: 1.1em 0;
-  padding: 0.2em 2em;
-  position: relative;
+  background-color: #272822;
+  font-size: 84.2105%;
+  padding: 1em;
+  margin: 0 0 1em;
+  overflow-x: scroll;
 }
-main blockquote::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  height: 2em;
-  background-color: #060606;
-  width: 5px;
-  margin-top: -1em;
+main blockquote h3:first-child {
+  margin-top: 0;
 }
-main blockquote::after {
-  content: "\201d";
-  font-size: 1.5em;
-  position: absolute;
-  top: 50%;
-  left: -0.5em;
-  color: #444;
-  line-height: 1em;
-  text-align: center;
-  text-indent: -4px;
-  width: 1em;
-  margin-top: -0.26em;
-}
-blockquote cite {
-  color: #444;
-  display: block;
-  font-size: 0.75em;
-  line-height: 1.8em;
-  margin-top: 1em;
+@media screen and (min-width: 1000px) {
+  .toc {
+    position: fixed;
+    left: 2%;
+    font-size: smaller;
+    width: 15%;
+  }
 }
 .highlight pre {
   padding: 1em;
@@ -192,7 +268,34 @@ blockquote cite {
 }
 main code {
   display: inline-block;
+  font-size: 84.2105%;
+}
+.dark main code {
   background-color: #272822;
+}
+.footnote {
+  font-size: 73.684%;
+  margin: 0;
+  padding: 0.5em;
+}
+.footnote hr {
+  border: 0.5px solid #888;
+  width: 75%;
+  margin: 2em auto;
+}
+nav.series ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav.series li {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  border-radius: 3px;
+  background-color: #444;
+}
+nav.series .hidden {
+  display: none;
 }
 
 .services div {
@@ -212,4 +315,19 @@ main code {
 
 .services ul {
   list-style: none;
+}
+
+.content main a.btn {
+  display: block;
+  width: max-content;
+  padding: 0.5em 1em;
+  margin: 0 auto;
+  background: var(--link-colour);
+  color: white;
+  text-decoration: none;
+  font-family: gilroy-extrabold, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-bottom: 4px solid HSL(52, 40%, 45%);
+  cursor: pointer;
 }

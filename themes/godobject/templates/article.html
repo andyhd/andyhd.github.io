@@ -2,8 +2,35 @@
 
 {% block content %}
   <article>
-    <h1>{{ article.title }}</h1>
-    <span>Posted <time datetime="{{ article.date }}">{{ article.friendly_date }}</time></span>
+    <header>
+      <h1>{{ article.title }}</h1>
+      <span>Posted <time datetime="{{ article.date }}">{{ article.friendly_date }}</time></span>
+    </header>
+
     {{ article.content }}
+
+    <footer>
+    {%- if article.series %}
+      <nav class="series">
+        <p>
+          This post is part {{ article.series.index }} of the {{ article.series.name }} series:
+        </p>
+        <ul>
+        {% if article.series.previous %}
+          <li><a href="{{ SITEURL }}/{{ article.series.previous.url }}" title="Previous">&laquo;</a></li>
+        {%- endif %}
+        {%- for part in article.series.all %}
+          <li{% if part.series.index == article.series.index %} class="current"{% endif %}>
+            <a href="{{ SITEURL }}/{{ part.url }}"><span
+               class="hidden">Part </span>{{ part.series.index }}</a>
+          </li>
+        {%- endfor %}
+        {% if article.series.next %}
+          <li><a href="{{ SITEURL }}/{{ article.series.next.url }}" title="Next">&raquo;</a></li>
+        {%- endif %}
+        </ul>
+      </nav>
+    {%- endif %}
+    </footer>
   </article>
 {% endblock %}

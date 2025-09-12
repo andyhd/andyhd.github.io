@@ -1,17 +1,28 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
+AUTHOR = 'Andy Driver'
+SITENAME = 'Andy Driver'
+SITEURL = ''
 
-AUTHOR = "Andy"
-SITENAME = "God Object"
-SITEURL = ""
+EXTRA_PATH_METADATA = {
+    "misc/robots.txt": {"path": "robots.txt"},
+    "misc/sitemap.xml": {"path": "sitemap.xml"},
+}
 
-PATH = "content"
-PAGE_PATHS = ["."]
-STATIC_PATHS = ["css", "images"]
+PATH = 'content'
+ARTICLE_PATHS = ["blog", "1gam"]
+ARTICLE_EXCLUDES = ["1gam/venv", "games"]
+PAGE_EXCLUDES = ["games"]
+STATIC_PATHS = [
+    'images',
+    'misc/robots.txt',
+    'misc/sitemap.xml',
+    'games',
+]
+STATIC_EXCLUDE_SOURCES = False
+READERS = {"html": None}
 
-TIMEZONE = "Europe/London"
+TIMEZONE = 'Europe/London'
 
-DEFAULT_LANG = "en"
+DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -20,40 +31,30 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = ()
+# # Blogroll
+# LINKS = (('Pelican', 'https://getpelican.com/'),
+#          ('Python.org', 'https://www.python.org/'),
+#          ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
+#          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = ()
+# SOCIAL = (('You can add links in your config file', '#'),
+#           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = True
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+#RELATIVE_URLS = True
 
 THEME = "themes/godobject"
 
-import pymdownx.emoji
-
 MARKDOWN = {
     "extension_configs": {
-        "pymdownx.superfences": {},
-        "pymdownx.smartsymbols": {},
-        "pymdownx.emoji": {
-            "emoji_index": pymdownx.emoji.gemoji,
-            "emoji_generator": pymdownx.emoji.to_png,
-            "alt": "short",
-            "options": {
-                "attributes": {"align": "absmiddle", "height": "20px", "width": "20px"},
-            },
-        },
-        "smarty": {},
-        "wikilinks": {},
-        "markdown.extensions.codehilite": {
-            "css_class": "highlight",
-        },
+        "wikilinks": {"base_url": "/pages/"},
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},
+        "markdown.extensions.toc": {"toc_depth": "2-3"},
     },
     "output_format": "html5",
 }
