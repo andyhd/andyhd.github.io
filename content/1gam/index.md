@@ -1,7 +1,7 @@
 Date: 2025-08-18 08:35
 Title: One Game a Month
 Save_as: 1gam/index.html
-    URL: 1gam/
+URL: 1gam/
 Summary: The Graveyard of Unfinished Projects
 Friendly_Date: on a fresh summer morning
 Tags: gamedev, python, pygame, challenge, tutorial, ogam
