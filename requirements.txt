@@ -1,3 +1,4 @@
 pelican
 pymdown-extensions
 pelican-webassets
+pelican-series
