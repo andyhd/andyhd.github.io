@@ -9,16 +9,12 @@ EXTRA_PATH_METADATA = {
 
 PATH = 'content'
 ARTICLE_PATHS = ["blog", "1gam"]
-ARTICLE_EXCLUDES = ["1gam/venv", "games"]
-PAGE_EXCLUDES = ["games"]
 STATIC_PATHS = [
     'images',
     'misc/robots.txt',
     'misc/sitemap.xml',
-    'games',
+    '1gam',
 ]
-STATIC_EXCLUDE_SOURCES = False
-READERS = {"html": None}
 
 TIMEZONE = 'Europe/London'
 
