@@ -332,6 +332,10 @@ class TitleScene:
         self.title_rect.center = screen.get_rect().center
         screen.blit(self.title_text, self.title_rect)
 
+        score_text = self.font.render(f"High Score: {shared_state['high_score']}", True, "white")
+        score_rect = score_text.get_rect(centerx=self.title_rect.centerx, top=self.title_rect.bottom + 50)
+        screen.blit(score_text, score_rect)
+
         # return self to stay in this scene
         return self
 
@@ -397,7 +401,7 @@ run(TitleScene())
 
 For this particular case, I think that closures are the better fit. As
 [Jack Diederich pointed out way back at PyCon 2012](https://www.youtube.com/watch?v=o9pEzgHorH0),
-if your class has two methods and one of the is `__init__`, you probably don't
+if your class has two methods and one of them is `__init__`, you probably don't
 need a class. The classes here just add extra boilerplate without providing much
 benefit.
 
