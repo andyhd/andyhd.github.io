@@ -113,6 +113,14 @@ body {
   padding: 0;
   margin: 0;
   line-height: 0;
+  height: 64px;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: var(--heading-colour);
+  font-size: 42px;
+  line-height: 1;
 }
 
 .site-header nav .github-link {
@@ -123,7 +131,7 @@ body {
   display: block;
   color: var(--heading-colour);
   width: 33px;
-  height: 32px;
+  padding: 16px 0;
 }
 .site-header nav .github-link svg {
   width: 100%;
