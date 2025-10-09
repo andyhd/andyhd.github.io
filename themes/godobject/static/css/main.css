@@ -393,6 +393,7 @@ form textarea {
   width: 100%;
   background: var(--background-colour);
   border: 1px solid var(--subheading-colour);
+  color: var(--font-colour);
   border-radius: 0.5em;
   font-size: 100%;
 }
