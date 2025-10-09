@@ -31,6 +31,56 @@
         </ul>
       </nav>
     {%- endif %}
+
+      <section id="comments">
+      {%- if article.metadata.comments %}
+        {%- set avatar_base_url="https://api.dicebear.com/9.x/pixel-art/svg?seed=" -%}
+
+        {%- macro render_comment(comment, index) -%}
+          <li id="comment-{{ index }}" class="comment">
+            <details open>
+              <summary class="meta">
+                <img src="{{ avatar_base_url }}{{ comment.author_hash }}" alt="">
+                <strong class="author">{{ comment.author|e }}</strong>
+                <time class="friendly" datetime="{{ comment.timestamp.isoformat() }}">{{ comment.timestamp.strftime("%b %d, %Y at %H:%M") }}</time>
+              </summary>
+              <div class="body">{{ comment.text|e }}</div>
+              {% if comment.replies -%}
+                <ol class="replies">
+                {% for reply in comment.replies %}
+                  {{ render_comment(reply, index ~ "-" ~ loop.index) }}
+                {%- endfor -%}
+              {%- endif %}
+            </details>
+          </li>
+        {%- endmacro -%}
+
+        <h2>Comments <span class="num-comments">{{ article.metadata.num_comments }}</span></h2>
+
+        <ol class="comments">
+        {% for comment in article.metadata.comments %}
+          {{ render_comment(comment, loop.index) }}
+        {% endfor %}
+        </ol>
+      {% endif -%}
+
+      {% if article.slug %}
+        <h2>Leave a Comment</h2>
+        <form method="post" action="https://example.com">
+          <input type="hidden" name="in_reply_to" value="{{ article.slug }}">
+          <label class="col-2">Name
+            <input type="text" id="author" name="author" required>
+          </label>
+          <label class="col-2">Email (will not be published)
+            <input type="email" id="email" name="email" required>
+          </label>
+          <label>Comment
+            <textarea id="text" name="text" rows="4" required></textarea>
+          </label>
+          <button class="btn" type="submit">Submit</button>
+        </form>
+      {% endif %}
+      </section>
     </footer>
   </article>
 {% endblock %}

@@ -15,6 +15,8 @@ STATIC_PATHS = [
     'misc/sitemap.xml',
     '1gam',
 ]
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['pelican.plugins.series', 'comments']
 
 TIMEZONE = 'Europe/London'
 
