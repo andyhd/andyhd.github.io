@@ -6,6 +6,7 @@ Summary: The Graveyard of Unfinished Projects
 Friendly_Date: on a fresh summer morning
 Tags: gamedev, python, pygame, challenge, tutorial, ogam
 Series: 1gam
+Slug: 1gam
 
 
 ## The Graveyard of Unfinished Projects
