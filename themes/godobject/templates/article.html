@@ -68,15 +68,11 @@
         <h2>Leave a Comment</h2>
         <form method="post" action="https://baqlz3e6iy2d5j5ukkdasbgki40hibfk.lambda-url.us-east-1.on.aws/">
           <input type="hidden" name="in_reply_to" value="{{ article.slug }}">
-          <label class="col-2">Name
-            <input type="text" id="author" name="author" required>
-          </label>
-          <label class="col-2">Email (will not be published)
-            <input type="email" id="email" name="email" required>
-          </label>
-          <label>Comment
-            <textarea id="text" name="text" rows="4" required></textarea>
-          </label>
+          <label class="col-2">Name <input type="text" name="author"></label>
+          <label class="col-2">Email (will not be published) <input type="email" name="email"></label>
+          <label>Comment <textarea name="text" rows="4"></textarea></label>
+          <label class="hp"><input type="checkbox" name="not-a-bot"> I am not a bot</label>
+          <small>Comments are moderated and may take some time to appear.</small>
           <button class="btn" type="submit">Submit</button>
         </form>
       {% endif %}
