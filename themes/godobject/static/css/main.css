@@ -410,6 +410,12 @@ form button {
   font-size: 80%;
   float: right;
 }
+form small {
+  display: inline-block;
+  font-size: 70%;
+  color: var(--subheading-colour);
+  margin-top: 2em;
+}
 
 .services div {
   box-sizing: border-box;
