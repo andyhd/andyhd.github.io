@@ -287,7 +287,7 @@ main code {
   padding: 0.5em;
 }
 .footnote hr {
-  border: 0.5px solid #888;
+  border: 0.5px solid var(--subheading-colour);
   width: 75%;
   margin: 2em auto;
 }
@@ -300,7 +300,8 @@ nav.series li {
   display: inline-block;
   padding: 0.2em 0.5em;
   border-radius: 3px;
-  background-color: #444;
+  border: 1px solid var(--subheading-colour);
+  background-color: var(--background-colour);
 }
 nav.series .hidden {
   display: none;
@@ -378,6 +379,9 @@ form label {
   float: left;
   min-width: 100%;
 }
+form label.hp {
+  display: none;
+}
 .col-2 {
   min-width: 48%;
 }
@@ -402,7 +406,7 @@ form textarea {
 }
 form button {
   clear: left;
-  margin-top: 0.5em;
+  margin: 0.5em 0 1em;
   font-size: 80%;
   float: right;
 }
