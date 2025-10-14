@@ -54,5 +54,5 @@ The first game will be [Pong](/1gam/01_pong). How hard can that be?
 
 [^1]: I was convinced I had watched Jerry Seinfeld insist the simple secret to
     success was "don't break the chain" but [apparently
-    not](https://www.reddit.com/r/IAmA/comments/1ujvrg/comment/ceiugt5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
+    not](https://www.reddit.com/r/IAmA/comments/1ujvrg/comment/ceiugt5/).
     Just remember, it's not a lie if you believe it.

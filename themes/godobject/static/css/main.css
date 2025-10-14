@@ -324,10 +324,10 @@ nav.series .hidden {
   padding: 0;
   font-size: 80%;
 }
-.comment {
+.comments li {
   margin-bottom: 1.5em;
 }
-.comment .meta {
+.comments .meta {
   position: relative;
   list-style: none;
   cursor: pointer;
@@ -335,38 +335,48 @@ nav.series .hidden {
   margin-left: 1.2em;
   height: 2.4em;
 }
-.comment .meta::-webkit-details-marker {
+.comments .meta::-webkit-details-marker {
   display: none;
 }
-.comment .meta img {
+.comments .meta img {
   float: left;
   width: 2.4em;
   height: 2.4em;
   margin-left: -2.9em;
 }
-.comment .meta .author {
+.comments .meta .author {
   display: block;
   font-weight: bold;
   color: var(--heading-colour);
   line-height: 1.2em;
 }
-.comment .meta time {
+.comments .meta time {
   display: block;
   line-height: calc(1.2em / 0.8);
   font-size: 80%;
   color: var(--subheading-colour);
   vertical-align: baseline;
 }
-.comment .body {
+.comments .body {
   clear: both;
   padding: 0 0 0 1.7em;
   margin: 0.5em 0 0 1.2em;
   border-left: 0.5px solid var(--subheading-colour);
 }
+.comments label {
+  display: block;
+  float: none;
+  padding: 0;
+  margin: 0;
+  min-width: auto;
+  font-weight: normal;
+}
+.comments label input {
+  display: none;
+}
 .replies {
-  padding: 1.5em 0 0 1.7em;
-  margin-left: 1.2em;
-  border-left: 0.5px solid var(--subheading-colour);
+  padding: 0;
+  margin-top: 1em;
 }
 
 form label {

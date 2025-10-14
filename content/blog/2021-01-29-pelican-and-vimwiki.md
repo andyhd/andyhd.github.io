@@ -7,7 +7,7 @@ I've managed to get [Pelican](https://docs.getpelican.com/en/latest/) to work
 with [Vimwiki](https://vimwiki.github.io/) so that I can publish my personal
 wiki directly to this site. I'll explain here what I did, why, and how I did it.
 
-# Why
+## Why
 
 I have never been a prolific (or noteworthy) writer, but every now and again I
 feel like giving it a try. Over the years I have used various means of
@@ -23,7 +23,7 @@ prefer to clumsily lash existing programs together to make a ramshackle raft of
 software just good enough to get the job done. Just for myself, of course, not
 for clients.
 
-## Pelican
+### Pelican
 
 <img alt="A pelican" title="A pelican" src="{static}pelican.jpg" style="float:
 right; width: 40%">
@@ -47,7 +47,7 @@ requirements, being
 3. I like pelicans.
 
 
-## Vimwiki
+### Vimwiki
 
 I use [Vim]() for editing text. I've been using it for about 20 years and I just
 can't be bothered to try anything else, so I won't bore you with the details of
@@ -60,7 +60,7 @@ rather like a [mind-map](https://en.wikipedia.org/wiki/Mind_map). These text
 files can be in several formats, one of which is Markdown. Aha!
 
 
-# How
+## How
 
 Vimwiki and Pelican can both make use of Markdown files, so it is quite easy to
 get them to work together.
@@ -136,7 +136,7 @@ MARKDOWN = {
 }
 ```
 
-# So What
+## So What
 
 This setup allows me to start a new blog post in Vim with `\w\w` . I can write
 in Markdown and have Pelican convert it to HTML and even push it to [Github
