@@ -35,24 +35,29 @@
       {% if article.slug %}
       <hr>
       <section id="comments">
+        <form method="post" action="https://baqlz3e6iy2d5j5ukkdasbgki40hibfk.lambda-url.us-east-1.on.aws/">
       {%- if article.metadata.comments %}
         {%- set avatar_base_url="https://api.dicebear.com/9.x/pixel-art/svg?seed=" -%}
 
-        {%- macro render_comment(comment, index) -%}
-          <li id="comment-{{ index }}" class="comment">
+        {%- macro render_comment(comment) -%}
+          <li data-id="{{ comment.id }}">
             <details open>
               <summary class="meta">
                 <img src="{{ avatar_base_url }}{{ comment.author_hash }}" alt="">
                 <strong class="author">{{ comment.author|e }}</strong>
-                <time class="friendly" datetime="{{ comment.timestamp.isoformat() }}">{{ comment.timestamp.strftime("%b %d, %Y at %H:%M") }}</time>
+                <time class="friendly" datetime="{{ comment.datetime.isoformat() }}">{{ comment.datetime.strftime("%b %d, %Y at %H:%M") }}</time>
               </summary>
-              <div class="body">{{ comment.text|e }}</div>
+              <div class="body">
+                {{ comment.text|e }}
+                <label><input type="radio" name="in_reply_to" value="{{ article.slug }}/{{ comment.id }}"> Reply</label>
               {% if comment.replies -%}
                 <ol class="replies">
                 {% for reply in comment.replies %}
-                  {{ render_comment(reply, index ~ "-" ~ loop.index) }}
+                  {{ render_comment(reply) }}
                 {%- endfor -%}
+                </ol>
               {%- endif %}
+              </div>
             </details>
           </li>
         {%- endmacro -%}
@@ -60,17 +65,18 @@
         <h2>Comments <span class="num-comments">{{ article.metadata.num_comments }}</span></h2>
 
         <ol class="comments">
-        {% for comment in article.metadata.comments %}
-          {{ render_comment(comment, loop.index) }}
+        {% for comment in article.metadata.comments.values() %}
+          {{ render_comment(comment) }}
         {% endfor %}
         </ol>
       {% endif -%}
 
         <h2>Leave a Comment</h2>
-        <form method="post" action="https://baqlz3e6iy2d5j5ukkdasbgki40hibfk.lambda-url.us-east-1.on.aws/">
           <input type="hidden" name="in_reply_to" value="{{ article.slug }}">
-          <label class="col-2">Name <input type="text" name="author"></label>
-          <label class="col-2">Email (will not be published) <input type="email" name="email"></label>
+          <label class="col-2">Name <input type="text" name="author"
+            autocomplete="given-name"></label>
+          <label class="col-2">Email (will not be published) <input type="email"
+            name="email" autocomplete="email"></label>
           <label>Comment <textarea name="text" rows="4"></textarea></label>
           <label class="hp"><input type="checkbox" name="not-a-bot"> I am not a bot</label>
           <small>Comments are moderated and may take some time to appear.</small>

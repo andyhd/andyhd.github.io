@@ -7,7 +7,7 @@ If you haven't heard of [Ludum Dare](https://ldjam.com), and you are at all
 interested in computer games, you should go and check it out now. It's ok, I'll
 wait.
 
-## Jams
+### Jams
 
 Game Jams are many and varied. Most have a simple set of rules, including how
 long you can spend writing your game, which languages and frameworks you can
@@ -33,7 +33,7 @@ Here are a few I have my eye on:
   gamedev skills through repetition and the less directly competitive nature of
   this one.
 
-## Themes
+### Themes
 
 At the time of writing this post, I'm waiting for the theme of Ludum Dare 42 to
 be announced. Entrants can suggest 3 themes each, and then everyone votes yes or
@@ -42,7 +42,7 @@ no to each suggestion, filtering down to a final theme selection.
 The theme is meant as a helpful restriction, to reduce the overwhelming
 possibilities of what kind of game to write.
 
-## Preparation
+### Preparation
 
 This is actually the first time I have entered Ludum Dare officially -
 previously I've lurked on the sidelines, trying to write games in the allotted

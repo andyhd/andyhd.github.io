@@ -15,32 +15,39 @@ def initialized(pelican):
 
 
 def add_comments(generator, metadata):
-    if post_slug := metadata.get("slug"):
+    post_slug = metadata.get("slug")
+    if post_slug:
         comments_dir = Path(generator.settings.get("COMMENTS_PATH", "comments")) / post_slug
 
-        comments = []
+        metadata["comments"] = {}
 
-        for i, comment_file in enumerate(sorted(comments_dir.glob("*.json"))):
+        for comment_file in sorted(comments_dir.glob("*.json")):
             try:
-                comment = json.loads(comment_file.read_text())
+                data = json.loads(comment_file.read_text())
+                logger.info(f"Loaded comment {comment_file.stem} for post {post_slug}")
             except json.JSONDecodeError as e:
                 logger.error(f"Failed to decode JSON from {comment_file}: {e}")
                 continue
 
-            if not comment:
-                continue
+            timestamp, _, author_hash = comment_file.stem.partition("_")
+            comment = {
+                "id": comment_file.stem,
+                "author": data["author"],
+                "author_hash": author_hash,
+                "text": data["text"],
+                "datetime": datetime.strptime(timestamp, "%Y%m%d%H%M%S"),
+                "in_reply_to": data.get("in_reply_to"),
+            }
 
-            comment["timestamp"] = datetime.strptime(comment["timestamp"], "%Y%m%d%H%M%S")
-
-            comment["replies"] = []
-
-            if in_reply_to := comment.get("in_reply_to"):
-                comments[in_reply_to - 1]["replies"].append(comment)
+            if comment["in_reply_to"]:
+                metadata["comments"][comment["in_reply_to"]].setdefault("replies", []).append(comment)
             else:
-                comments.append(comment)
+                metadata["comments"][comment["id"]] = comment
 
-        metadata["comments"] = comments
-        metadata["num_comments"] = i + 1 if comments else 0
+        metadata["num_comments"] = (
+            len(metadata["comments"])
+            + sum(len(c.get("replies", [])) for c in metadata["comments"].values())
+        )
 
 
 def register():
