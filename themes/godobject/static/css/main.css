@@ -325,7 +325,16 @@ nav.series .hidden {
   font-size: 80%;
 }
 .comments li {
+  height: auto;
   margin-bottom: 1.5em;
+}
+#comments:has(.clear:not(:checked)) .comments li {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+#comments:has(.clear:not(:checked)) .comments li:has([name="in_reply_to"]:checked) {
+  height: auto;
 }
 .comments .meta {
   position: relative;
@@ -367,9 +376,11 @@ nav.series .hidden {
   display: block;
   float: none;
   padding: 0;
-  margin: 0;
+  margin: 0.5em 0 0;
   min-width: auto;
   font-weight: normal;
+  color: var(--subheading-colour);
+  font-size: 80%;
 }
 .comments label input {
   display: none;
@@ -411,20 +422,37 @@ form textarea {
   border-radius: 0.5em;
   font-size: 100%;
 }
+form .clear {
+  display: none;
+}
+form label:has(.clear:checked) {
+  display: none;
+}
+#comments form label.btn {
+  display: inline-block;
+  width: auto;
+  min-width: auto;
+  margin: 0;
+  background: HSL(0, 0%, 70%);
+  border-color: HSL(0, 0%, 60%);
+}
 form textarea {
   width: 100%;
 }
+#comments form footer {
+  display: flex;
+  width: 100%;
+  gap: 1em;
+  align-items: baseline;
+}
 form button {
-  clear: left;
-  margin: 0.5em 0 1em;
   font-size: 80%;
-  float: right;
 }
 form small {
   display: inline-block;
   font-size: 70%;
   color: var(--subheading-colour);
-  margin-top: 2em;
+  flex: 1;
 }
 
 .services div {

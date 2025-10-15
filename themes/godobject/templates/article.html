@@ -35,7 +35,6 @@
       {% if article.slug %}
       <hr>
       <section id="comments">
-        <form method="post" action="https://baqlz3e6iy2d5j5ukkdasbgki40hibfk.lambda-url.us-east-1.on.aws/">
       {%- if article.metadata.comments %}
         {%- set avatar_base_url="https://api.dicebear.com/9.x/pixel-art/svg?seed=" -%}
 
@@ -49,7 +48,7 @@
               </summary>
               <div class="body">
                 {{ comment.text|e }}
-                <label><input type="radio" name="in_reply_to" value="{{ article.slug }}/{{ comment.id }}"> Reply</label>
+                <label><input type="radio" form="comment" name="in_reply_to" value="{{ article.slug }}/{{ comment.id }}"> Reply</label>
               {% if comment.replies -%}
                 <ol class="replies">
                 {% for reply in comment.replies %}
@@ -72,15 +71,18 @@
       {% endif -%}
 
         <h2>Leave a Comment</h2>
-          <input type="hidden" name="in_reply_to" value="{{ article.slug }}">
+        <form id="comment" method="post" action="https://baqlz3e6iy2d5j5ukkdasbgki40hibfk.lambda-url.us-east-1.on.aws/">
           <label class="col-2">Name <input type="text" name="author"
             autocomplete="given-name"></label>
           <label class="col-2">Email (will not be published) <input type="email"
             name="email" autocomplete="email"></label>
           <label>Comment <textarea name="text" rows="4"></textarea></label>
           <label class="hp"><input type="checkbox" name="not-a-bot"> I am not a bot</label>
-          <small>Comments are moderated and may take some time to appear.</small>
-          <button class="btn" type="submit">Submit</button>
+          <footer>
+            <small>Comments are moderated and may take some time to appear.</small>
+            <label class="btn"><input class="clear" type="radio" name="in_reply_to" value="{{ article.slug }}" checked> Cancel reply</label>
+            <button class="btn" type="submit">Submit</button>
+          </footer>
         </form>
       </section>
       {% endif %}
