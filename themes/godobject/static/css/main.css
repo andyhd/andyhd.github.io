@@ -327,6 +327,7 @@ nav.series .hidden {
 .comments li {
   height: auto;
   margin-bottom: 1.5em;
+  transition: all 1s;
 }
 #comments:has(.clear:not(:checked)) .comments li {
   height: 0;
@@ -425,9 +426,6 @@ form textarea {
 form .clear {
   display: none;
 }
-form label:has(.clear:checked) {
-  display: none;
-}
 #comments form label.btn {
   display: inline-block;
   width: auto;
@@ -435,6 +433,9 @@ form label:has(.clear:checked) {
   margin: 0;
   background: HSL(0, 0%, 70%);
   border-color: HSL(0, 0%, 60%);
+}
+#comments form label:has(.clear:checked) {
+  display: none;
 }
 form textarea {
   width: 100%;
