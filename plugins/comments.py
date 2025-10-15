@@ -19,6 +19,7 @@ def add_comments(generator, metadata):
     if post_slug:
         comments_dir = Path(generator.settings.get("COMMENTS_PATH", "comments")) / post_slug
 
+        comments = {}
         metadata["comments"] = {}
 
         for comment_file in sorted(comments_dir.glob("*.json")):
@@ -38,9 +39,10 @@ def add_comments(generator, metadata):
                 "datetime": datetime.strptime(timestamp, "%Y%m%d%H%M%S"),
                 "in_reply_to": data.get("in_reply_to"),
             }
+            comments[comment["id"]] = comment
 
             if comment["in_reply_to"]:
-                metadata["comments"][comment["in_reply_to"]].setdefault("replies", []).append(comment)
+                comments[comment["in_reply_to"]].setdefault("replies", []).append(comment)
             else:
                 metadata["comments"][comment["id"]] = comment
 
