@@ -129,7 +129,7 @@ work.
 
 ```python
 from collections.abc import Callable, Mapping
-from functools import lru_cache, partial
+from functools import lru_cache
 from pathlib import Path
 from typing import Concatenate
 
@@ -146,7 +146,7 @@ FONT_EXTS = ".ttf", ".otf"
 ASSET_LOADERS = (
     {_: lambda path: pg.image.load(path).convert_alpha() for _ in IMAGE_EXTS}
     | {_: pg.mixer.Sound for _ in AUDIO_EXTS}
-    | {_: partial(pg.font.Font, path) for _ in FONT_EXTS}
+    | {_: pg.font.Font for _ in FONT_EXTS}
 )
 
 
