@@ -8,8 +8,6 @@ Series: 1gam
 Tags: gamedev, python, pygame, challenge, tutorial, 1gam, pong
 
 
-[TOC]
-
 Well, here we are. One game a month, game number one. An apt place to start is
 [Pong](https://en.wikipedia.org/wiki/Pong). Allan Alcorn wrote it in 1972 as a
 training exercise assigned to him by Atari founder Nolan Bushnell.
