@@ -56,8 +56,7 @@ representing tilt, which ranges from `-1.0` (full tilt left or up) to `1.0`
 (full tilt right or down).[^1]
 
 The current `bind` returns only action strings, so metadata like joystick tilt
-(`event.value`) or mouse position (`event.pos`) gets lost. For analog control,
-we need that context alongside the action.
+(`event.value`) or mouse position (`event.pos`) is lost.
 
 
 ## Refining the Recipe
