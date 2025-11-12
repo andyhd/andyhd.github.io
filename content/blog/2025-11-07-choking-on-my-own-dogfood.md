@@ -68,9 +68,9 @@ My first thought was [KISS][7]: stick to built-in types and return a list of
 tuples, where each tuple contains the action string and the event object that
 triggered it.
 
-But a clearer, more type-safe approach would be to define an `Action` dataclass
+But a clearer, more type-safe approach would be to define an `Action` class
 which has a name (e.g. "move right") and blends in the event metadata, like
-joystick tilt. And we can make it immutable by freezing the dataclass.
+joystick tilt.
 
 A custom class makes intent clear in type hints, e.g.
 `map_events_to_actions(events: list[Event]) -> list[Action]`.
@@ -88,21 +88,18 @@ Here is the updated control system module with the new `Action` class:
 
 ```python
 from collections.abc import Callable
-from dataclasses import InitVar, dataclass
+from types import SimpleNamespace
 from typing import Any
 
 import pygame as pg
 
 
-@dataclass(frozen=True)
-class Action:
-    name: str
-    event: InitVar[pg.Event]
+class Action(SimpleNamespace):
     __match_args__ = ("name",)
 
-    def __post_init__(self, event: pg.Event):
-        for key, value in event.__dict__.items():
-            object.__setattr__(self, key, value)
+    def __init__(self, name: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = name
 
 
 ActionMapper = Callable[[list[pg.Event]], list[Action]]
@@ -131,7 +128,7 @@ def bind(mapping: dict[str, list[pg.Event]]) -> ActionMapper:
 
     def map_events_to_actions(events: list[pg.Event]) -> list[Action]:
         return [
-            Action(name=action, event=event)
+            Action(action, event.__dict__)
             for event in events
             if (action := get_action(event))
         ]
