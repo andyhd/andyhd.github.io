@@ -47,18 +47,13 @@ You know how they say not to turn your hobby into a job, because you will ruin
 your enjoyment of it? I should have listened.
 
 I thought the monthly deadline and the drive to not break the chain would
-motivate me.
-
-"Working within constraints inspires creativity," I told myself.
+motivate me.  "Working within constraints inspires creativity," I told myself.
 
 But optimising for a monthly finish meant sacrificing the parts of gamedev I
-actually enjoy.
-
-Coming up with new ideas - mechanics, themes, world-building - was the first to
-go. I had to keep the scope manageable to have any hope of finishing.
-
-Elegant code was next for the chop. There was no room for spending hours
-on code that already worked.
+actually enjoy.  Coming up with new ideas - mechanics, themes, world-building -
+was the first to go. I had to keep the scope manageable to have any hope of
+finishing.  Elegant code was next for the chop. There was no room for spending
+hours on code that already worked.
 
 I had turned my hobby into a joyless job.
 
