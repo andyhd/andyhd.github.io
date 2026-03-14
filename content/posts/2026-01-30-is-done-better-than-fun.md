@@ -1,6 +1,6 @@
 Date: 2026-01-30 23:08
 Title: Is 'Done' Better Than 'Fun'?
-Summary: Why I'm quitting my one-game-a-month challenge
+Category: posts
 Friendly_Date: after a couple of months off blogging
 Series: 1gam
 Tags: gamedev, lisp, 1gam

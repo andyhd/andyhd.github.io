@@ -1,5 +1,5 @@
 Title: Who Dares Wins
-Date: 2018-08-02 14:58:28 +0100
+Category: posts
 Friendly_Date: around teatime on the day Apple became the first trillion dollar company
 Summary: It's time for Ludum Dare 42, and I am *in*!
 

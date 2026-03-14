@@ -1,6 +1,6 @@
 Date: 2025-11-05 21:23
 Title: Choking on My Own Dog Food
-Summary: A small example of refactoring some Python code.
+Category: posts
 Friendly_Date: after the excitement of Fireworks Night
 Tags: gamedev, python, pygame
 

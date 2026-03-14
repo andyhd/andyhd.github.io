@@ -1,5 +1,5 @@
 Title: Pelican and Vimwiki
-Summary: Behold my sticky tape and rubber bands
+Category: posts
 Friendly_Date: just before midnight on a rainy Thursday
 
 

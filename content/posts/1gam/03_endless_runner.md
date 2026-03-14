@@ -1,8 +1,7 @@
 Date: 2025-10-21 13:37
 Title: Game #3: Eterniski
-Save_as: 1gam/03_endless_runner/index.html
-Url: 1gam/03_endless_runner
-Summary: It's all downhill from here!
+Slug: 1gam/03_endless_runner
+Category: posts
 Friendly_Date: on a rainy Tuesday afternoon
 Series: 1gam
 Tags: gamedev, python, pygame, challenge, tutorial, 1gam

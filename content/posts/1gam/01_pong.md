@@ -1,8 +1,7 @@
 Date: 2025-09-12 13:37
 Title: Game #1: Pong
-Save_as: 1gam/01_pong/index.html
-Url: 1gam/01_pong/
-Summary: Kicking off my "one game a month" challenge with a classic
+Slug: 1gam/01_pong
+Category: posts
 Friendly_Date: during an early autumn deluge
 Series: 1gam
 Tags: gamedev, python, pygame, challenge, tutorial, 1gam, pong

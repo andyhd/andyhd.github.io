@@ -1,6 +1,6 @@
 Date: 2025-10-04 16:39
 Title: Cover Your Assets
-Summary: A simple asset loader for Pygame
+Category: posts
 Friendly_Date: in the aftermath of Storm Amy
 Tags: gamedev, python, pygame
 

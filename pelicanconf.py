@@ -1,6 +1,6 @@
 AUTHOR = 'Andy Driver'
 SITENAME = 'Andy Driver'
-SITEURL = ''
+SITEURL = 'https://andydriver.net'
 
 EXTRA_PATH_METADATA = {
     "misc/robots.txt": {"path": "robots.txt"},
@@ -8,13 +8,23 @@ EXTRA_PATH_METADATA = {
 }
 
 PATH = 'content'
-ARTICLE_PATHS = ["blog", "1gam"]
+ARTICLE_PATHS = ["posts"]
 STATIC_PATHS = [
     'images',
     'misc/robots.txt',
     'misc/sitemap.xml',
-    '1gam',
+    'posts/1gam',
 ]
+
+ARTICLE_URL = '{category}/{slug}/'
+ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+INDEX_SAVE_AS = 'posts/index.html'
+
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_MENU = False
+
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican.plugins.series', 'comments']
 
@@ -23,11 +33,12 @@ TIMEZONE = 'Europe/London'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+FEED_ATOM = "feeds/atom.xml"
+# FEED_ALL_ATOM = None
+# CATEGORY_FEED_ATOM = None
+# TRANSLATION_FEED_ATOM = None
+# AUTHOR_FEED_ATOM = None
+# AUTHOR_FEED_RSS = None
 
 # # Blogroll
 # LINKS = (('Pelican', 'https://getpelican.com/'),

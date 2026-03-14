@@ -1,0 +1,12 @@
+[project]
+name = "andydriver-net"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pelican>=4.11.0.post0",
+    "pelican-series>=3.1.0",
+    "pelican-webassets>=2.1.0",
+    "pymdown-extensions>=10.20.1",
+]

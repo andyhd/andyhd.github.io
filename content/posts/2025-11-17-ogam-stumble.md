@@ -1,6 +1,6 @@
 Date: 2025-11-17 20:34
 Title: Wiping Out
-Summary: Why didn't I manage to finish this month's game?
+Category: posts
 Friendly_Date: on a chilly autumn evening
 Series: 1gam
 Tags: gamedev, python, pygame, 1gam
@@ -105,7 +105,7 @@ and I'll be back next month with a finished game.
 [7]: https://en.wikipedia.org/wiki/Frogger
 [8]: https://crossyroad.com/
 [9]: https://torinak.com/qaop/play/horaceskiing
-[10]: /1gam/03_endless_runner
+[10]: /posts/1gam/03_endless_runner/
 [11]: https://humnom.net/apps/boscaceoil/
 [12]: https://github.com/andyhd/eterniski
 [13]: https://andydriver.net/eterniski
