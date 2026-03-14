@@ -3,3 +3,7 @@ output/
 comments/
 .exrc
 .stfolder
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
