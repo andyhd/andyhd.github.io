@@ -1,6 +1,6 @@
 Date: 2025-09-30 20:14
 Title: A Rubber Duck that Talks Back
-Summary: How I use LLMs to help me write.
+Category: posts
 Friendly_Date: on the day we turned the heating on
 Tags: ai, llms, gpt
 

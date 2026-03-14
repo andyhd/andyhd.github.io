@@ -1,6 +1,6 @@
 Date: 2025-09-17 00:09
 Title: A Change of Scene
-Summary: Basic scene management in Pygame
+Category: posts
 Friendly_Date: just after midnight
 Tags: gamedev, python, pygame
 

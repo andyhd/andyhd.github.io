@@ -1,7 +1,7 @@
 Date: 2021-03-07 19:37
 Status: draft
 Title: Building a microservice with Python and Zappa
-Friendly-Date: a Sunday evening before dinner
+Category: posts
 
 
 # Achievements as a Service

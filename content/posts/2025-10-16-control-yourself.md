@@ -1,6 +1,6 @@
 Date: 2025-10-16 19:35
 Title: Control Yourself
-Summary: Tackling customisable controls in Pygame.
+Category: posts
 Friendly_Date: on a brisk autumn evening
 Tags: gamedev, python, pygame
 

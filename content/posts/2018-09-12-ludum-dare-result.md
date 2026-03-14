@@ -1,5 +1,5 @@
 Title: Ludum Dare Results
-Date: 2018-09-12 07:52:03 +0100
+Category: posts
 Friendly_Date: bright and early on a Wednesday morning
 Summary: Here's what I managed to achieve in my first game jam.
 

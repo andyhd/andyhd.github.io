@@ -1,6 +1,6 @@
 Date: 2025-02-22 17:50
 Title: Tower Defence game, Part 2: Path-finding
-Friendly-Date: Evening of the first warm day of the year
+Category: posts
 Tags: gamedev, python, pygame, tower-defence, tutorial
 Status: draft
 

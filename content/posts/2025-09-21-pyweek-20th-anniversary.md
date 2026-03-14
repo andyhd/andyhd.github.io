@@ -1,6 +1,6 @@
 Date: 2025-09-21 20:17
 Title: PyWeek 40
-Summary: In which I attempt to actually submit a gamejam entry for once.
+Category: posts
 Friendly_Date: on an unusually warm autumn evening
 Series: 1gam
 Tags: gamedev, python, pygame

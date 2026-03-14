@@ -1,13 +1,11 @@
 Date: 2025-08-18 08:35
 Title: One Game a Month
-Save_as: 1gam/index.html
 URL: 1gam/
 Summary: The Graveyard of Unfinished Projects
 Friendly_Date: on a fresh summer morning
 Tags: gamedev, python, pygame, challenge, tutorial, ogam
-Series: 1gam
 Slug: 1gam
-
+comments: False
 
 ## The Graveyard of Unfinished Projects
 
@@ -19,7 +17,7 @@ accumulating an embarrassingly large collection of incomplete and broken games
 and now my personal project directory resembles the warehouse at the end of
 Raiders of the Lost Ark.
 
-![A warehouse full of boxes]({static}raiders-warehouse.jpg){width="90%"}
+![A warehouse full of boxes]({static}/posts/1gam/raiders-warehouse.jpg){width="90%"}
 
 While procrastinating on my latest project, I remembered the ["One Game a
 Month"](https://onegameamonth.com/) challenge. Even though the original website
@@ -49,7 +47,7 @@ go along, but I will set myself a few simple rules:
 3. **All code will be open source.**
    The complete code and assets for each game will be available on GitHub.
 
-The first game will be [Pong](/1gam/01_pong). How hard can that be?
+The first game will be [Pong](/posts/1gam/01_pong/). How hard can that be?
 
 
 [^1]: I was convinced I had watched Jerry Seinfeld insist the simple secret to
