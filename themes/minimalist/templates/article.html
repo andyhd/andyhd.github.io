@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article>
+    <header>
+      <h1>{{ article.title }}</h1>
+      <time datetime="{{ article.date }}">{{ article.friendly_date }}</time>
+    </header>
+
+    {{ article.content }}
+
+    <footer>
+      {% if article.series %}
+        <nav class="series">
+          <p>This post is part {{ article.series.index }} of the {{ article.series.name }} series.</p>
+        </nav>
+      {% endif %}
+    </footer>
+  </article>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section id="intro">
+    <p>
+      I am a senior software developer with over 20 years of experience. I have spent my career crafting code, but I am currently navigating the transition to a world of AI agents and automated development.
+    </p>
+    <p>
+      <a href="/now">What I'm doing now &rarr;</a>
+    </p>
+  </section>
+
+  <section id="latest-posts">
+    <h2>Recent Writing</h2>
+    {% for article in articles[:3] %}
+      <article>
+        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+        <time datetime="{{ article.date }}">{{ article.friendly_date }}</time>
+        {{ article.summary }}
+      </article>
+    {% endfor %}
+    <p><a href="/posts">All posts &rarr;</a></p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="https://github.com/andyhd/beads">Beads</a> &ndash; Issue tracking for developers and AI agents.</li>
+      <li><a href="https://github.com/andyhd/thrust">Thrust</a> &ndash; A 2D space combat game in Common Lisp and Raylib.</li>
+      <li><a href="https://github.com/andyhd/pelican-series">Pelican Series</a> &ndash; A Pelican plugin for grouping articles into series.</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>
+      Find me on <a href="https://reddit.com/u/andyhd">Reddit</a> or check out my work on <a href="https://github.com/andyhd">GitHub</a>.
+    </p>
+  </section>
+{% endblock %}

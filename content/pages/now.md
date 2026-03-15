@@ -15,7 +15,7 @@ me out of my complacency. I am now in full-throttle catch-up mode.
   loom and struggling to accept the end of coding as a craft. It is a painful
   wrench to admit that a core part of my identity is becoming a relic.
 
-- Setting up my Home AI Lab and testing local models. I am currently running
+- Setting up my home AI Lab and testing local models. I am currently running
   Qwen 3.5 27B on my 32GB MBP M2 Max. It is surprisingly good.  I am saving up
   for a beefy GPU and as much VRAM as I can afford.
 
