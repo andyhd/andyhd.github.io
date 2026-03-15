@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+{%- block head %}
+  <title>{% block title %}Andy Driver{% endblock %}</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css">
+{%- endblock %}
+</head>
+<body>
+  <div class="content">
+    <header class="site-header">
+      <h1><a href="/">Andy Driver</a></h1>
+    </header>
+    <main>
+      {%- block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/now">Now</a></li>
+          <li><a href="/posts">Writing</a></li>
+          <li><a href="https://github.com/andyhd">GitHub</a></li>
+          <li><a href="https://reddit.com/u/andyhd">Reddit</a></li>
+        </ul>
+      </nav>
+      <p class="colophon">
+        &copy; {{ CURRENT_YEAR }} Andy Driver. Senior developer with 20+ years of experience.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

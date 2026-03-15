@@ -1,0 +1,106 @@
+:root {
+  --background-colour: #fff;
+  --font-colour: #333;
+  --link-colour: #007bff;
+  --heading-colour: #111;
+  --subheading-colour: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-colour: #111;
+    --font-colour: #ccc;
+    --link-colour: #4dabf7;
+    --heading-colour: #eee;
+    --subheading-colour: #888;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  background-color: var(--background-colour);
+  color: var(--font-colour);
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+header.site-header {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--subheading-colour);
+}
+
+header.site-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+header.site-header a {
+  text-decoration: none;
+  color: var(--heading-colour);
+}
+
+main section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: var(--heading-colour);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--subheading-colour);
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--link-colour);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+time {
+  font-size: 0.9rem;
+  color: var(--subheading-colour);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+article {
+  margin-bottom: 2rem;
+}
+
+.site-footer {
+  margin-top: 5rem;
+  border-top: 1px solid var(--subheading-colour);
+  padding-top: 2rem;
+}
+
+.site-footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.site-footer .colophon {
+  font-size: 0.85rem;
+  color: var(--subheading-colour);
+}
