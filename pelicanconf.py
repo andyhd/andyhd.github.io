@@ -23,6 +23,8 @@ ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 INDEX_SAVE_AS = 'posts/index.html'
+DIRECT_TEMPLATES = ['home', 'index', 'tags', 'categories', 'authors', 'archives']
+HOME_SAVE_AS = 'index.html'
 
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
