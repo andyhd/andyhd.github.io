@@ -14,13 +14,14 @@ def initialized(pelican):
         pelican.settings.setdefault("COMMENTS_PATH", "comments")
 
 
-def add_comments(generator, metadata):
-    post_slug = metadata.get("slug")
-    if post_slug:
-        comments_dir = Path(generator.settings.get("COMMENTS_PATH", "comments")) / post_slug
+def add_comments(generator):
+    comments_path = generator.settings.get("COMMENTS_PATH", "comments")
+    for article in generator.articles:
+        post_slug = article.slug
+        comments_dir = Path(comments_path) / post_slug
 
         comments = {}
-        metadata["comments"] = {}
+        article.metadata["comments"] = {}
 
         for comment_file in sorted(comments_dir.glob("*.json")):
             try:
@@ -44,11 +45,11 @@ def add_comments(generator, metadata):
             if comment["in_reply_to"]:
                 comments[comment["in_reply_to"]].setdefault("replies", []).append(comment)
             else:
-                metadata["comments"][comment["id"]] = comment
+                article.metadata["comments"][comment["id"]] = comment
 
-        metadata["num_comments"] = (
-            len(metadata["comments"])
-            + sum(len(c.get("replies", [])) for c in metadata["comments"].values())
+        article.metadata["num_comments"] = (
+            len(article.metadata["comments"])
+            + sum(len(c.get("replies", [])) for c in article.metadata["comments"].values())
         )
 
 
@@ -56,4 +57,4 @@ def register():
     from pelican import signals
 
     signals.initialized.connect(initialized)
-    signals.article_generator_context.connect(add_comments)
+    signals.article_generator_finalized.connect(add_comments)
