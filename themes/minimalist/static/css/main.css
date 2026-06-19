@@ -90,6 +90,11 @@ article pre {
   font-size: 71.0525%;
 }
 
+article hr {
+  border: 1px solid var(--subheading-colour);
+  border-width: 1px 0 0;
+}
+
 .site-footer {
   margin-top: 5rem;
   border-top: 1px solid var(--subheading-colour);
@@ -109,3 +114,157 @@ article pre {
   font-size: 0.85rem;
   color: var(--subheading-colour);
 }
+
+.num-comments {
+  font-size: 60%;
+  background: var(--font-colour);
+  color: var(--background-colour);
+  display: inline-block;
+  border-radius: 1em;
+  padding: 0 0.5em;
+  vertical-align: middle;
+  margin: 0 0 2px 0.5em;
+}
+.comments, .replies {
+  list-style-type: none;
+}
+.comments {
+  padding: 0;
+  font-size: 80%;
+}
+.comments li {
+  height: auto;
+  margin-bottom: 1.5em;
+  transition: all 1s;
+}
+#comments:has(.clear:not(:checked)) .comments li {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+#comments:has(.clear:not(:checked)) .comments li:has([name="in_reply_to"]:checked) {
+  height: auto;
+}
+.comments .meta {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding-left: 1.7em;
+  margin-left: 1.2em;
+  height: 2.4em;
+}
+.comments .meta::-webkit-details-marker {
+  display: none;
+}
+.comments .meta img {
+  float: left;
+  width: 2.4em;
+  height: 2.4em;
+  margin-left: -2.9em;
+}
+.comments .meta .author {
+  display: block;
+  font-weight: bold;
+  color: var(--heading-colour);
+  line-height: 1.2em;
+}
+.comments .meta time {
+  display: block;
+  line-height: calc(1.2em / 0.8);
+  font-size: 80%;
+  color: var(--subheading-colour);
+  vertical-align: baseline;
+}
+.comments .body {
+  clear: both;
+  padding: 0 0 0 1.7em;
+  margin: 0.5em 0 0 1.2em;
+  border-left: 0.5px solid var(--subheading-colour);
+}
+.comments label {
+  display: block;
+  float: none;
+  padding: 0;
+  margin: 0.5em 0 0;
+  min-width: auto;
+  font-weight: normal;
+  color: var(--subheading-colour);
+  font-size: 80%;
+}
+.comments label input {
+  display: none;
+}
+.replies {
+  padding: 0;
+  margin-top: 1em;
+}
+
+form label {
+  box-sizing: border-box;
+  display: block;
+  margin: 0.5em 0 0.5em;
+  font-size: 80%;
+  font-weight: bold;
+  color: var(--subheading-colour);
+  float: left;
+  min-width: 100%;
+}
+form label.hp {
+  display: none;
+}
+.col-2 {
+  min-width: 48%;
+}
+.col-2 + .col-2 {
+  float: right;
+}
+form input,
+form textarea,
+form button {
+  box-sizing: border-box;
+  display: block;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  width: 100%;
+  background: var(--background-colour);
+  border: 1px solid var(--subheading-colour);
+  color: var(--font-colour);
+  border-radius: 0.5em;
+  font-size: 100%;
+}
+form button {
+  width: auto;
+  font-size: 80%;
+  font-weight: bold;
+  color: var(--subheading-colour);
+}
+form .clear {
+  display: none;
+}
+#comments form label.btn {
+  display: inline-block;
+  width: auto;
+  min-width: auto;
+  margin: 0;
+  background: HSL(0, 0%, 70%);
+  border-color: HSL(0, 0%, 60%);
+}
+#comments form label:has(.clear:checked) {
+  display: none;
+}
+form textarea {
+  width: 100%;
+}
+#comments form footer {
+  display: flex;
+  width: 100%;
+  gap: 1em;
+  align-items: baseline;
+}
+form small {
+  display: inline-block;
+  font-size: 70%;
+  color: var(--subheading-colour);
+  flex: 1;
+}
+
