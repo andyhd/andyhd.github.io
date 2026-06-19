@@ -1,6 +1,8 @@
+from datetime import datetime
+
 AUTHOR = 'Andy Driver'
 SITENAME = 'Andy Driver'
-SITEURL = 'https://andydriver.net'
+# SITEURL = 'https://andydriver.net'
 
 EXTRA_PATH_METADATA = {
     "misc/robots.txt": {"path": "robots.txt"},
@@ -21,6 +23,8 @@ ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 INDEX_SAVE_AS = 'posts/index.html'
+DIRECT_TEMPLATES = ['home', 'index', 'tags', 'categories', 'authors', 'archives']
+HOME_SAVE_AS = 'index.html'
 
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
@@ -29,6 +33,7 @@ PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican.plugins.series', 'comments']
 
 TIMEZONE = 'Europe/London'
+CURRENT_YEAR = datetime.now().year
 
 DEFAULT_LANG = 'en'
 
@@ -63,6 +68,7 @@ MARKDOWN = {
         "markdown.extensions.codehilite": {"css_class": "highlight"},
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},
+        "markdown.extensions.smarty": {},
         "markdown.extensions.toc": {"toc_depth": "2-3"},
     },
     "output_format": "html5",

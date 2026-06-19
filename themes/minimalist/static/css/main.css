@@ -85,6 +85,11 @@ article {
   margin-bottom: 2rem;
 }
 
+article pre {
+  padding: 1em;
+  font-size: 71.0525%;
+}
+
 .site-footer {
   margin-top: 5rem;
   border-top: 1px solid var(--subheading-colour);

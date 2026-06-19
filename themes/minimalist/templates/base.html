@@ -5,6 +5,7 @@
   <title>{% block title %}Andy Driver{% endblock %}</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/monokai.css">
 {%- endblock %}
 </head>
 <body>
@@ -20,13 +21,12 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/now">Now</a></li>
-          <li><a href="/posts">Writing</a></li>
+          <li><a href="/posts">Posts</a></li>
           <li><a href="https://github.com/andyhd">GitHub</a></li>
-          <li><a href="https://reddit.com/u/andyhd">Reddit</a></li>
         </ul>
       </nav>
       <p class="colophon">
-        &copy; {{ CURRENT_YEAR }} Andy Driver. Senior developer with 20+ years of experience.
+        &copy; {{ CURRENT_YEAR }} Andy Driver.
       </p>
     </footer>
   </div>
