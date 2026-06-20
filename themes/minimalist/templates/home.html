@@ -3,13 +3,13 @@
 {% block content %}
   <section id="intro">
     <p>
-      I'm a software engineer trying to figure out what that means these days.
+      I mostly write about hobby game development in Python or Common Lisp.
     </p>
     <p><a href="/now">What I'm doing now &rarr;</a></p>
   </section>
 
   <section id="latest-posts">
-    <h2>Recent Writing</h2>
+    <h2>Latest Posts</h2>
     {% for article in articles[:3] %}
       <article>
         <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
