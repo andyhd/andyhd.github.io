@@ -13,4 +13,4 @@ Date: 2026-06-19
 
 - Studying Japanese. 日本語は大好きですよ！
 
-- Karate. Early days - I am grading for 8th Kyu very soon.
+- Karate. Early days - I am grading for 7th Kyu very soon.
