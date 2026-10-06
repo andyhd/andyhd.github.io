@@ -146,7 +146,7 @@ corrode).
 
 But the PDC was the most fun part of the whole build. Raw creation, working
 backwards from the goal, figuring out the crazy dependencies the player has to
-untangle. Some of them are nasty.
+untangle.
 
 If you ever make an adventure game, you can't go wrong stealing Ron Gilbert's
 ideas. And if you steal mine, you may find yourself in a puzzling conversation
