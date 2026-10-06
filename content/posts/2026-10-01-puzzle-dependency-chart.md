@@ -15,13 +15,13 @@ Atlantis, Sam and Max Hit the Road - and Ron Gilbert is one of my gamedev
 heroes. The theme brought to mind the time-hopping puzzles of Day of the
 Tentacle, and the idea of making something like that hooked me.
 
+## It All Depends
+
 To design the interconnected game puzzles, I used a [Puzzle Dependency Chart
 (PDC), as described by Gilbert on his blog][3]. A PDC is a graph of every puzzle
 and puzzle step in the game, with an edge from each step to the steps that make
 it possible. It is not a flow chart. Rather than "what happens next", a PDC
 shows "what does this _depend_ on".
-
-## It All Depends
 
 Gilbert's advice is to start from the end of a puzzle chain, and keep asking
 "what has to happen before this can?". In his example, the goal "Open Basement
@@ -148,8 +148,9 @@ But the PDC was the most fun part of the whole build. Raw creation, working
 backwards from the goal, figuring out the crazy dependencies the player has to
 untangle. Some of them are nasty.
 
-If you ever make an adventure game, steal Ron Gilbert's idea. And if you steal
-mine too, you may find yourself dictating a chart.
+If you ever make an adventure game, you can't go wrong stealing Ron Gilbert's
+ideas. And if you steal mine, you may find yourself in a puzzling conversation
+with an AI too.
 
 <div style="clear: left"><br></div>
 
